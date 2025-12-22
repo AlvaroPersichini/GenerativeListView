@@ -3,8 +3,6 @@
     Sub Main()
 
 
-
-
         ' ***************************************** ListView2  ***********************
         Dim myExcel As Microsoft.Office.Interop.Excel.Application = CType(GetObject(, "Excel.Application"), Microsoft.Office.Interop.Excel.Application) ' Enlaza EXCEL y comprobar estado. (pag.177)
         Dim oWorkbook As Microsoft.Office.Interop.Excel.Workbook = myExcel.ActiveWorkbook
@@ -20,10 +18,10 @@
 
         ' oCATIA.AppCATIA.Interactive = False ' Esto hay que verlo porque CATIA queda sin menues luego de correr este programa con esta linea.
 
-        To_Excel.CompletaListView2(oPorduct, oWorkSheet, "C:\Temp")
-        Diccionarios.FormatoListView2(oWorkSheet)
+        CatiaToExcel.CompletaListView2(oPorduct, oWorkSheet, "C:\Temp")
+        ExcelFormatListView.FormatoListView2(oWorkSheet)
 
-        oCATIA.AppCATIA.Interactive = True
+        oCATIA.Application.Interactive = True
         myExcel.ScreenUpdating = True
 
 
