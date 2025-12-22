@@ -21,7 +21,7 @@
         ' oCATIA.AppCATIA.Interactive = False ' Esto hay que verlo porque CATIA queda sin menues luego de correr este programa con esta linea.
 
         To_Excel.CompletaListView2(oPorduct, oWorkSheet, "C:\Temp")
-        Procedimientos.FormatoListView2(oWorkSheet)
+        Diccionarios.FormatoListView2(oWorkSheet)
 
         oCATIA.AppCATIA.Interactive = True
         myExcel.ScreenUpdating = True

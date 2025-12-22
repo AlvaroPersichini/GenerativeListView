@@ -74,6 +74,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CatiaSession.vb" />
+    <Compile Include="CatiaToExcel.vb" />
+    <Compile Include="Diccionarios.vb" />
+    <Compile Include="PwrProduct.vb" />
+    <Compile Include="ExcelFormatListView.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
