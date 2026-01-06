@@ -4,7 +4,7 @@ Este módulo de **VB.NET** automatiza la generación de reportes tipo "Lista de 
 
 Su función principal es recorrer una estructura de producto, extraer metadatos, capturar una imagen (thumbnail) de cada parte y formatear una hoja de cálculo de Excel con esta información.
 
-## 🚀 Características
+## Características
 
 * **Extracción de Metadatos:** Obtiene automáticamente propiedades como *Part Number*, *Description*, *Vendor Code*, *Quantity*, y *Source* (Made/Bought).
 * **Parámetros de Usuario:** Lee propiedades específicas definidas por el usuario (`UserRefProperties`), como *Material* y *Material en Bruto*.
@@ -15,7 +15,7 @@ Su función principal es recorrer una estructura de producto, extraer metadatos,
     * Guarda una imagen `.jpg` y la inserta automáticamente en la celda de Excel correspondiente.
 * **Filtrado:** Incluye lógica para omitir partes específicas (ej. archivos que comienzan con "AUX").
 
-## 📋 Requisitos Previos
+## Requisitos Previos
 
 Este código requiere referencias a las librerías COM de CATIA y Excel. Asegúrate de tener referenciadas las siguientes librerías en tu proyecto:
 
@@ -30,13 +30,13 @@ El código hace uso de un módulo auxiliar externo (no incluido en este snippet)
 * `Diccionarios.EncuentraColumna(HeaderName, Sheet)`: Devuelve la letra/índice de la columna.
 * `ExcelFormatListView.FormatoListView2(Sheet)`: Aplica estilos a la hoja.
 
-## ⚠️ Reglas de Naming Importantes
+## Reglas de Naming Importantes
 
 > **CRÍTICO:** Los nombres de los archivos (PartNumbers) **NO deben contener barras invertidas (`\`)**.
 
 CATIA permite crear productos con nombres como `Cube2\Elementary Source`, pero al guardar o procesar archivos a nivel de sistema operativo, el texto antes de la barra invertida es ignorado o causa errores de ruta, lo que fallará al intentar guardar la captura de pantalla (`.jpg`).
 
-## ⚙️ Cómo Funciona (`CompletaListView2`)
+## Cómo Funciona (`CompletaListView2`)
 
 1.  **Inicialización:** Desactiva las alertas de CATIA (`DisplayFileAlerts = False`) para evitar interrupciones.
 2.  **Mapeo de Columnas:** Busca dinámicamente en qué columna de Excel debe ir cada dato.
@@ -48,13 +48,3 @@ CATIA permite crear productos con nombres como `Cube2\Elementary Source`, pero a
 6.  **Escritura:** Vuelca los datos de texto y parámetros en las celdas de Excel.
 7.  **Inserción de Imagen:** Coloca la imagen capturada dentro de la celda designada y la ajusta.
 8.  **Limpieza:** Cierra la ventana temporal y restaura la configuración de visualización.
-
-## 🛠️ Uso
-
-```vb
-' Ejemplo de llamada al procedimiento
-Dim oMyProduct As ProductStructureTypeLib.Product = ... ' Tu producto raíz
-Dim oMySheet As Microsoft.Office.Interop.Excel.Worksheet = ... ' Tu hoja de destino
-Dim sRutaImagenes As String = "C:\Temp\ImagenesReporte"
-
-CatiaToExcel.CompletaListView2(oMyProduct, oMySheet, sRutaImagenes)
